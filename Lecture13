@@ -1,0 +1,99 @@
+package accesModifiers1;
+public class A{
+    //default
+    int x = 10;//default or package private
+    private int y = 15;
+    public int z = 20;
+    protected int w = 25;
+
+    public static void main(String[] args){
+      A obj = new A();
+      System.out.println(obj.x);
+        System.out.println(obj.y);
+        System.out.println(obj.z);
+        System.out.println(obj.w);
+    }
+}
+////////////////////////////////
+package accesModifiers1;
+
+public class B {
+    public static void main(String[] args){
+        A obj = new A();
+ //       System.out.println(obj.x);//defult is accessible in same packege
+          //System.out.println(obj.y);//private not accessible outside the class
+        System.out.println(obj.z);
+        System.out.println(obj.w);
+    }
+}
+//////////////////////////////////////////////////
+package accessModifiers2;
+import accesModifiers1.A;
+public class C extends A{
+    public static void main(String[] args){
+        A obj = new A();
+        C childObj = new C();
+        //System.out.println(obj.x); //default is not accessible outisde the package
+        //System.out.println(obj.y); //private not accessible outside the class
+        System.out.println(obj.z);
+        System.out.println(childObj.w); //protected will be visible in different package in subclass, using object of subclass only
+    }
+}
+//////////////////////////////
+package accessModifiers2;
+import accesModifiers1.A;
+public class C extends A{
+    public static void main(String[] args){
+        A obj = new A();
+        C childObj = new C();
+        //System.out.println(obj.x); //default is not accessible outisde the package
+        //System.out.println(obj.y); //private not accessible outside the class
+        System.out.println(obj.z);
+        System.out.println(childObj.w); //protected will be visible in different package in subclass, using object of subclass only
+    }
+}
+
+/////////////////////////////////
+
+package encapsulation;
+class Demo {
+    private int a = 5;
+    private int b = 10;
+    private int c = 15;
+    private int d = 20;
+
+    public int getA() //getter
+    {
+        System.out.println("Value of B read");
+        return this.b;
+    }
+
+    public void setA(int a)
+    {
+        if(a>100)
+        {
+            this.a = a;
+            System.out.println("Value of A changed to: "+a);
+        }
+        else{
+            System.out.println("Cannot set - vaue outside limits");
+        }
+    }
+//    {
+//        this.a = a;
+//    }
+    public void setB(int b)
+    {
+        this.b = b;
+    }
+}
+public class EncapStudy {
+    public static void main(String[] args){
+        //TO DO Auto-generated method stub
+        Demo d = new Demo();
+        //System.out.println(d.a);//not visible because private
+        System.out.println(d.getA());
+        d.setA(100);
+        System.out.println(d.getA());
+    }
+}
