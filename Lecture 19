@@ -22,7 +22,14 @@ public class TimeComplexity {
     }
     public static void main(String[] args){
         int n = 100;
+        long start = System.currentTimeMillis();
         System.out.println(isPrimeRam(n));
+        long end = System.currentTimeMillis();
+        System.out.println("Time by RAM's approch: " + (end-start));
+
+        start = System.currentTimeMillis();
         System.out.println(isPrimeSham(n));
+        end = System.currentTimeMillis();
+        System.out.println("Time by SHAM's approach: " + (end-start));
     }
 }
