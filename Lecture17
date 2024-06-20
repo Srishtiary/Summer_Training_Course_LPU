@@ -1,1 +1,48 @@
+package scanner;
+import java.util.Scanner;
+//public class ScannerStudy {
+//    public static void main(String[] args){
+//        Scanner sc = new Scanner(System.in);
+//        System.out.println("Please enter your name: ");
+//        String firstName = sc.next();//it will take input till a space occurs
+//        String lastName = sc.next();
+//        System.out.println("Please enter your profession: ");
+//        String profession = sc.next();
+//        System.out.println("Please enter your address: ");
+//        sc.nextLine();
+//        String address = sc.nextLine();
+//        System.out.println("First Name: " + firstName);
+//        System.out.println("Last Name: " + lastName);
+//        System.out.println("Profession: " + profession);
+//
+//        //whenever we need to take mixed input like:'
+//        //1.Number and String both are there
+//        //2.Words from a single line then complete next line or something like that
+//        //-> use nextLine ande parse the data
+//    }
+//}
 
+
+public class ScannerStudy {
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Please enter your First name: ");
+        String firstName = sc.nextLine();//it will take input till a space occurs
+        System.out.println("Please enter your Last Name: ");
+        String lastName = sc.nextLine();
+        System.out.println("Please enter your profession: ");
+        String profession = sc.nextLine();
+        System.out.println("Please enter your address: ");
+        String address = sc.nextLine();
+        System.out.println("Please enter your house number: ");
+        int number = Integer.parseInt(sc.nextLine());
+        System.out.println("First Name: " + firstName);
+        System.out.println("Last Name: " + lastName);
+        System.out.println("Profession: " + profession);
+
+        //whenever we need to take mixed input like:'
+        //1.Number and String both are there
+        //2.Words from a single line then complete next line or something like that
+        //-> use nextLine ande parse the data
+    }
+}
