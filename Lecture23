@@ -1,0 +1,132 @@
+package strings;
+import java.util.Scanner;
+
+public class StringStudy {
+    public static void main(String[] args){
+        String name = "CipherSchools";//created using string literals - stored in method area
+        String name2 = "CipherSchools";
+
+        String name3 = new String("CipherSchools");//creating string using constructors
+        String name4 = new String("CipherSchools");
+
+        System.out.println(name==name2);//==operator compares references for objects and values for primitive data type
+        System.out.println(name3==name4);
+        System.out.println(name==name3);
+
+//      STRINGS ARE IMMUTABLE
+//      Everytime we do an operation on a string, a new object is created
+
+        System.out.println("========================");
+        System.out.println("1.CONCATENATION");
+        //1.Concatenation
+        String s1 = "Hello";
+        s1 = s1 + "Peeps";
+        System.out.println(s1 + "How're you doing");
+        System.out.println(s1);//s1 remains same because
+
+//      Another way to concat is to use function
+        String s2 = new String("Hello");
+        String s3 = new String("People");
+//        s2.concat(s3);
+        String s4 = s2.concat(s3);
+        System.out.println(s4);
+        System.out.println(s2);
+
+        System.out.println("==================");
+        System.out.println("2. CHECKING IF STRING ARE EQUAL IN VALUE");
+        //2.CHECKING IF STRINGS ARE EQUAL IN VALUE
+
+        System.out.println(name.equals(name2));
+        System.out.println(name.equals(name3));
+        //Equals function -> Object class.
+        //This generally compares references(hashcodes) of object (just like ==)
+        //But, for String class it has been overridden to check for content equality
+
+        System.out.println("=================================");
+        System.out.println("3)Creating new object from character array");
+
+        //3)Creating new String object from character array
+        char arr[] = {'C','I','H','E','R'};
+        String strFromArr = new String(arr);//constructor overload
+        System.out.println(strFromArr);
+
+        //4)Creating partial String object from character array
+        System.out.println("=======================");
+        System.out.println("4.Creating partial String object from character array");
+        String partialStrFromArr = new String(arr, 1, 3); //We can pass an array,starting index(include), count of element after stating index
+        System.out.println(partialStrFromArr);
+
+        String partialStrFromArr2 = new String(arr, 2, 3);
+        System.out.println(partialStrFromArr2);
+
+        //5. Changing the case
+        System.out.println("====================================");
+        System.out.println("5. Changing the case");
+        System.out.println(name.toLowerCase());
+        System.out.println(name.toUpperCase());
+        name = name.toUpperCase();
+        System.out.println(name);//remain same
+
+//        //6. Splitting
+//        System.out.println("===========================");
+//        System.out.println("6. Splitting");
+//        System.out.println("Please enter your full name: ");
+//        Scanner sc = new Scanner(System.in);
+//        String fullName = sc.nextLine();//Chipher School Welcome You
+//        String strArr[] = fullName.split(" ");
+//        for(int i=0; i<strArr.length;i++)
+//        {
+//            System.out.println(strArr[i]);
+//        }
+//        System.out.println("Please enter something separated by comes: ");
+//        String csvText = sc.nextLine();//chiper School Welcome You
+//        String csvArr[] = csvText.split(",");
+//        for(int i=0;i<csvArr.length;i++)
+//        {
+//            System.out.println(csvArr[i]);
+//        }
+//        System.out.println("Please enter something sepreated by dots ");
+//        String dotText = sc.nextLine();
+//        String dotArr[] = dotText.split("[.]"); //a dot is a meta char in regex, so we will need to use it inside square brackets
+//        for(int i=0;i<dotArr.length;i++)
+//        {
+//            System.out.println(dotArr[i]);
+//        }
+//        String backSlashText = "Hello, I attend \"Java\" Class";
+//        String backSlashArr[] = backSlashText.split("\"");
+//        for(int i=0;i<backSlashArr.length;i++)
+//        {
+//            System.out.println(backSlashArr[i]);
+//        }
+
+        //7. Length of a string
+        System.out.println("===============================");
+        System.out.println("7. Length of a string");
+        int len = name.length();
+        System.out.println("Length of: " + name + " is: " + len);
+
+        //8. Finding index of a char in a string
+        System.out.println("8. Finding index of a char in a string");
+        int index = name.indexOf('e'); //return first occurence of that character
+        System.out.println("Index of 'e' in " + " is: " + index);
+
+        int index2 = name.indexOf('E'); //returns -1 if not found
+        System.out.println("Index of 'E' in " + name + " is: " + index2 );
+
+        int index3 = name.indexOf("School"); //return first occurrence of that string
+        System.out.println("Index of School in " + name + " is: " + index3);
+
+        int index4 = name.indexOf('o',10); //start searching from index 10. 10 included
+        System.out.println("Index of 'o' in " + name + " is: " + index4);
+
+        int indexOfO= 0;
+
+        //while(indexOfO != -1) //Stop at -1 or Run till not -1
+        while(true) //Infinte loop - you keep on running, we'll stop you.
+        {
+            indexOfO = name.indexOf('0', indexOfO + 1);
+            if(indexOfO == -1)break;
+            System.out.println("0 found at: " + indexOfO);
+        }
+    }
+}
