@@ -1,0 +1,46 @@
+//Remove Loop in linked list
+//void detectAndRemoveLoop(Node head)
+//{
+//    if(head == null) return;
+//    Node slow = head;
+//    Node fast = head;
+//    while(fast!=null && fast.next!=null){
+//        slow = slow.next;
+//        fast = fast.next.next;
+//        if(slow==fast)
+//        {
+//            break;
+//        }
+//    }
+//    //can break of 2 reasons - either loop not found or loop found
+//    if(slow==fast)
+//    {
+//        slow = head;
+//        while(slow = slow.next)
+//        {
+//            slow = slow.next;
+//            fast = fast.next;
+//        }
+//        //this breaks when fast points to the last element of loop
+//        fast.next = null;
+//    }
+//}
+
+//void removeLoop(Node listNode,Node loopNode)
+//{
+//    Node temp = loopNode;
+//    while(true)//To increment listNode
+//    {
+//        while(loopNode.next!=listNode.next!=loopNode!=temp)//To increment loopNode
+//        {
+//            loopNode = loopNode.next;
+//        }
+//        //it could have come out of inner loop bcoz of 2 conditions
+//        if(listNode.next==loopNode.next)//if required node found
+//        {
+//            loopNode.next = null;
+//            return;
+//        }
+//        listNode = listNode.next;//if loopNode completed one circle
+//    }
+//}
