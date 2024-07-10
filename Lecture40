@@ -1,0 +1,53 @@
+package stacks;
+import java.util.Stack;
+
+public class ClassStudy {
+    public static void main(String[] args){
+        Stack<Integer> s = new Stack<>();
+        System.out.println(s.isEmpty());
+        s.push(1);
+        System.out.println(s.isEmpty());
+        System.out.println(s.peek());
+        System.out.println(s.pop());
+        System.out.println(s.isEmpty());
+    }
+}
+
+
+//class Soultion
+//{
+//    static boolean isipar(String x)
+//    {
+//        int len = x.length();
+//        if(len%z != 0) return fasle;
+//        Stack<Character> stack = new Stack<>();
+//
+//        for(int i=0;i<len;i++)
+//        {
+//            char c = x.charAt(i);
+//            if(arr[i]=='{' || arr[i]=='(')
+//            {
+//                stack.push(arr[i]);
+//            }
+//            else{
+//                if(stack.isEmpty()) return false;
+//                if(isPair(stack.peek(), arr[i]))
+//                {
+//                    stack.pop();
+//                }
+//                else{
+//                    return false;
+//                }
+//            }
+//        }
+//        if(!stack.isEmpty()) return fasle;
+//        return true;
+//    }
+//    static boolean is pair(char aa, char b)
+//{
+//    if(a=='{' && b=='}') return true;
+//    if(a=='[' && b==']') return true;
+//    if(a=='(' && b==')') return true;
+//    return false;
+//}
+//}
