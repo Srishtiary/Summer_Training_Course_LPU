@@ -1,0 +1,147 @@
+import java.util.Scanner;
+public class BinaryTree {
+   static Scanner sc = new Scanner(System.in);
+    public static void main(String[] args){
+        System.out.println("Creating a Binary Search Tree: ");
+    node root = createTree();
+        System.out.println("Printing the Inorder Traversal");
+    InOrder(root);
+        System.out.println();
+        System.out.println("Printing the Preorder Traversal");
+    PreOrder(root);
+        System.out.println();
+        System.out.println("Printing the Postorder Traversal");
+    PostOrder(root);
+        System.out.println();
+    Insertion(root);
+    InOrder(root);
+        System.out.println();
+    Search(root);
+        deleteNode(root);
+        InOrder(root);
+    }
+    static node createTree(){
+        node root = null;
+        System.out.println("Enter data: ");
+        int data = sc.nextInt();
+
+        if(data == -1) return null;
+        root = new node(data);
+
+        System.out.println("Enter left for "+data);
+        root.left = createTree();
+        System.out.println("Enter right for "+data);
+        root.right = createTree();
+        return root;
+    }
+    static void InOrder(node root){
+        if(root == null){
+            return;
+        }
+        InOrder(root.left);
+        System.out.print(root.data+" ");
+        InOrder(root.right);
+    }
+    static void PreOrder(node root){
+        if(root == null){
+            return;
+        }
+        System.out.print(root.data+" ");
+        PreOrder(root.left);
+        PreOrder(root.right);
+    }
+    static void PostOrder(node root){
+        if(root == null){
+            return;
+        }
+        PostOrder(root.left);
+        PostOrder(root.right);
+        System.out.print(root.data+" ");
+    }
+    static node Insertion(node root){
+        System.out.println("Enter the data you want to insert: ");
+        int key = sc.nextInt();
+        return insertNode(root,key);
+    }
+    static node insertNode(node root, int key){
+        if(root == null){
+            return new node(key);
+        }
+        if(key < root.data){
+            root.left = insertNode(root.left,key);
+        }else if(key > root.data){
+            root.right = insertNode(root.right,key);
+        }else{
+            insertNode(root.left,key);
+        }
+        return root;
+    }
+    static void Search(node root){
+        System.out.println("Enter the Element you want to search in the BST: ");
+        int ele = sc.nextInt();
+        boolean found = searchNode(root,ele);
+        if(found){
+            System.out.println("Element has been found");
+        }else{
+            System.out.println("Element does not exist");
+        }
+
+    }
+
+    static boolean searchNode(node root, int ele){
+        if(root == null){
+            return false;
+        }
+        if(root.data == ele){
+            return true;
+        }
+        boolean foundInLeft = searchNode(root.left,ele);
+        if(foundInLeft){
+            return true;
+        }
+        return searchNode(root.right,ele);
+    }
+    static int Minimum(node root){
+        int mValue = root.data;
+        while(root.left!=null){
+            mValue = root.left.data;
+            root = root.left;
+        }
+        return mValue;
+    }
+    static node deleteNode(node root){
+        System.out.println("Enter the element you want to delete: ");
+        int ele = sc.nextInt();
+        return deleteAcc(root, ele);
+    }
+    static node deleteAcc(node root, int ele){
+        if(root == null){
+            return root;
+        }
+
+        if(ele<root.data){
+            root.left = deleteAcc(root.left, ele);
+        }else if(ele>root.data){
+            root.right = deleteAcc(root.right, ele);
+        }else{
+            if(root.left == null){
+                return root.right;
+            }else if(root.right==null){
+                return root.left;
+            }
+
+            root.data = Minimum(root.right);
+
+            root.right = deleteAcc(root.right, root.data);
+        }
+        return root;
+    }
+}
+class node{
+    node left, right;
+    int data;
+
+    public node (int data) {
+        this.data = data;
+    }
+}
