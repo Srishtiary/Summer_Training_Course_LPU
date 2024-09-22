@@ -1,0 +1,151 @@
+import java.util.Scanner;
+
+public class BST_Practice {
+    static class node{
+        int data;
+        node left,right;
+        node(int data){
+            this.data = data;
+        }
+    }
+    static Scanner sc = new Scanner(System.in);
+    public static node createTree(){
+        System.out.println("Enter Data: ");
+        int data = sc.nextInt();
+
+        if(data == -1) return null;
+        node newNode = new node(data);
+
+        System.out.println("Enter left for "+data);
+        newNode.left = createTree();
+        System.out.println("Enter right for "+data);
+        newNode.right = createTree();
+        return newNode;
+    }
+
+    public static void InOrder(node newNode){
+        if(newNode == null){
+            return;
+        }
+        InOrder(newNode.left);
+        System.out.print(newNode.data+" ");
+        InOrder(newNode.right);
+    }
+    public static void PreOrder(node newNode){
+        if(newNode == null){
+            return;
+        }
+        System.out.print(newNode.data+" ");
+        PreOrder(newNode.left);
+        PreOrder(newNode.right);
+    }
+    public static void PostOrder(node newNode){
+        if(newNode == null){
+            return;
+        }
+        PostOrder(newNode.left);
+        PostOrder(newNode.right);
+        System.out.print(newNode.data+" ");
+    }
+     public static node Insertion(node root){
+         System.out.println("Enter the node data you want to insert into Binary Search Tree: ");
+         int key = sc.nextInt();
+         return InsertNode(root, key);
+     }
+     public static node InsertNode(node root, int key){
+        if(root == null){
+            return new node(key);
+        }
+        if(key<root.data){
+            root.left = InsertNode(root.left,key);
+        }else if(key>root.data){
+            root.right = InsertNode(root.right,key);
+        }
+        return root;
+     }
+
+     //
+     public static void Search(node root){
+         System.out.println("Enter the Element you want to search in the BST: ");
+         int ele = sc.nextInt();
+         boolean found = searchNode(root,ele);
+         if(found){
+             System.out.println("Element has been found");
+         }else{
+             System.out.println("Element does not exist");
+         }
+
+     }
+
+    public static boolean searchNode(node root, int ele){
+        if(root == null){
+            return false;
+        }
+        if(root.data == ele){
+            return true;
+        }
+        boolean foundInLeft = searchNode(root.left,ele);
+        if(foundInLeft){
+            return true;
+        }
+        return searchNode(root.right,ele);
+    }
+    public static int Minimum(node root){
+        int mValue = root.data;
+        while(root.left!=null){
+            mValue = root.left.data;
+            root = root.left;
+        }
+        return mValue;
+    }
+    public static node deleteNode(node root){
+        System.out.println("Enter the element you want to delete: ");
+        int ele = sc.nextInt();
+        return deleteAcc(root, ele);
+    }
+    public static node deleteAcc(node root, int ele){
+        if(root == null){
+            return root;
+        }
+
+        if(ele<root.data){
+            root.left = deleteAcc(root.left, ele);
+        }else if(ele>root.data){
+            root.right = deleteAcc(root.right, ele);
+        }else{
+            if(root.left == null){
+                return root.right;
+            }else if(root.right==null){
+                return root.left;
+            }
+
+            root.data = Minimum(root.right);
+
+            root.right = deleteAcc(root.right, root.data);
+        }
+        return root;
+    }
+
+    //
+    public static void main(String[] args) {
+        System.out.println("Creating a Binary Search Tree => ");
+        node root = createTree();
+        System.out.println("The Inorder of given Binary Search Tree is: ");
+        InOrder(root);
+        System.out.println();
+        System.out.println("The Preorder of given Binary Search Tree is: ");
+        PreOrder(root);
+        System.out.println();
+        System.out.println("The Postorder of given Binary Search Tree is: ");
+        PostOrder(root);
+        System.out.println();
+        Insertion(root);
+        System.out.println("The Inorder of given Binary Search Tree is: ");
+        InOrder(root);
+        System.out.println();
+        Search(root);
+        System.out.println();
+        deleteNode(root);
+        InOrder(root);
+    }
+}
