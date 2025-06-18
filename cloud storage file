@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>File Storage Platform</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header class="navbar">
+    <div class="logo">CloudDrive</div>
+    <nav class="nav-links">
+      <a href="#">Solutions</a>
+      <a href="#">Products</a>
+      <a href="#">Industries</a>
+      <a href="#">Pricing</a>
+      <a href="#">Resources</a>
+    </nav>
+    <div class="auth-buttons">
+      <button class="try" onclick="window.location.href='business.html'">Try for work</button>
+      <button class="signin" onclick="window.location.href='signin.html'">Sign in</button>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-text">
+        <img src="https://seancomeau.wordpress.com/wp-content/uploads/2012/07/cloudfilestorage.jpg" alt="Top Hero Image" class="top-image" height="123">
+        <span class="cloud-text">Cloud Storage</span>
+      <h1><span class="bold-text">Store and Share</span><br><span class="bold-text">files online</span></h1>
+      <p>Cloud-powered storage for seamless file sharing and enhanced collaboration.</p>
+      <div class="hero-buttons">
+        <button class="signin" onclick="window.location.href='signin.html'">Sign in</button>
+        <button class="try" onclick="window.location.href='business.html'">Try for work</button>
+      </div>
+    </div>
+    <div class="hero-image">
+      <img src="https://mobiles-live.com/wp-content/uploads/2025/01/Cloud-Storage-for-Team-Collaboration.jpg" alt="File sharing illustration">
+    </div>
+  </section>
+
+</body>
+</html>
